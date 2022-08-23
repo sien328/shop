@@ -1,4 +1,3 @@
-import { StringLike } from '@firebase/util';
 import './button.styles.scss';
 
 
@@ -11,6 +10,7 @@ import './button.styles.scss';
 interface Props {
   children: string;
   buttonType: string;
+  onClick?: () => Promise<void>;
   otherProps?: any;
 }
 

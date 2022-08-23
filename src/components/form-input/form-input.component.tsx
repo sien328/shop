@@ -1,4 +1,3 @@
-import { Fragment } from "react";
 import './form-input.styles.scss';
 
 interface Props {

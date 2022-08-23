@@ -4,15 +4,6 @@ import FormInput from '../form-input/form-input.component';
 import Button from '../button/button.compontent';
 import { createAuthUserWithEmailAndPassword, createUserDocumentFromAuth } from '../../utils/firebase.utils/firebase.utils';
 
-
-
-interface defaultFormFields {
-  displayName: string,
-  email: string,
-  password: string,
-  confirmPassword: string
-}
-
 const defaultFormFields = {
   displayName: '',
   email: "",
@@ -43,9 +34,9 @@ const SignUpForm = () => {
       await createUserDocumentFromAuth(userCred.user, { displayName });
       resetFormFields();
     } catch (error:any) {
-      if(error.code == 'auth/weak-password') {
+      if(error.code === 'auth/weak-password') {
         alert("Password to weak, at least 6 letters long")
-      }else if (error.code == 'auth/email-already-in-use') {
+      }else if (error.code === 'auth/email-already-in-use') {
         alert("User email is already in use")
       }
       console.log("User create ran into an error", error);

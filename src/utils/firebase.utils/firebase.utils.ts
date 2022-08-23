@@ -2,10 +2,11 @@
 import { initializeApp } from "firebase/app";
 import { 
   getAuth, 
-  signInWithRedirect, 
+  // signInWithRedirect, 
   signInWithPopup, 
   GoogleAuthProvider, 
-  createUserWithEmailAndPassword
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
   } 
   from 'firebase/auth';
 import {
@@ -28,7 +29,7 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+initializeApp(firebaseConfig);
 
 const  provider = new GoogleAuthProvider();               
 
@@ -68,4 +69,10 @@ export const createAuthUserWithEmailAndPassword = async (email:string, password:
   if(!email || !password) return;
 
   return await createUserWithEmailAndPassword(auth, email, password);
+}
+
+export const signInUserWithEmailAndPassword = async (email:string, password:string) => {
+  if(!email || !password) return;
+
+  return await signInWithEmailAndPassword(auth, email, password);
 }
